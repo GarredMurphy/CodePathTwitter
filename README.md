@@ -50,6 +50,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+- I had problems with getting the app to run and login.  I decided to completely start the project over so i deleted everything i wrote.
+
+
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
