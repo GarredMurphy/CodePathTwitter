@@ -46,7 +46,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func onLogoutButton(_ sender: Any) {
-        APIManager.logout()
+        APIManager.shared.logout()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

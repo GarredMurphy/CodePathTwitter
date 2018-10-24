@@ -110,19 +110,13 @@ class APIManager: SessionManager {
         }
     }
     
-    static func logout() {
-        // 1. Clear current user
+    func logout() {
+        
         User.current = nil
         
-        // TODO: 2. Deauthorize OAuth tokens
-        let keychain = Keychain()
-        do {
-            try keychain.remove("twitter_credentials")
-        } catch let error {
-            print ("error: \(error)")
-        }
+        self.clearCredentials()
         
-        // 3. Post logout notification
+        
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
     func favorite(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
@@ -180,7 +174,18 @@ class APIManager: SessionManager {
             }
         }
     }
-    // MARK: TODO: Compose Tweet
+    
+    func composeTweet(with text: String, completion: @escaping (Tweet?, Error?) -> ()) {
+        let urlString = "https://api.twitter.com/1.1/statuses/update.json"
+        let parameters = ["status": text]
+        oauthManager.client.post(urlString, parameters: parameters, headers: nil, body: nil, success: { (response: OAuthSwiftResponse) in
+            let tweetDictionary = try! response.jsonObject() as! [String: Any]
+            let tweet = Tweet(dictionary: tweetDictionary)
+            completion(tweet, nil)
+        }) { (error: OAuthSwiftError) in
+            completion(nil, error.underlyingError)
+        }
+    }
     
     // MARK: TODO: Get User Timeline
     
