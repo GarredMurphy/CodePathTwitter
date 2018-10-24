@@ -2,7 +2,7 @@
 
 **Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **7** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -54,7 +54,7 @@ Describe any challenges encountered while building the app.
 
 # Project 6 - *Twitter*
 
-Time spent: **X** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
